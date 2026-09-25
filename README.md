@@ -36,3 +36,36 @@ typedef struct {
     float circonference;
     int annee_plantation;
 } Arbre;
+```
+
+Each row of the CSV is parsed into an `Arbre` structure, then stored in an array so the program can iterate over the full dataset to compute statistics (averages, maxima, age estimation) and apply filters (e.g. by genus or species).
+
+## 🚀 Comment lancer
+
+### Prérequis
+Un compilateur C (`gcc`) installé sur votre machine.
+
+### Compilation
+```bash
+gcc main.c -o forest_analyzer
+```
+
+### Exécution
+* **Windows:**
+    ```bash
+    .\forest_analyzer.exe
+    ```
+* **Mac/Linux:**
+    ```bash
+    ./forest_analyzer
+    ```
+
+Le programme lit le fichier `foret_arbres_50_V1.csv` (présent à la racine du dépôt) et affiche les analyses statistiques directement dans le terminal.
+
+## 👤 Auteur
+
+**Noa** - Étudiant @ IUT Amiens
+* [Mon profil GitHub](https://github.com/BernierNoa)
+
+---
+*Projet réalisé dans le cadre du Bachelor Universitaire de Technologie (BUT) Informatique - Semestre 1.*
