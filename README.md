@@ -14,10 +14,11 @@ Its purpose is to load, process, and analyze real urban data regarding trees pla
 
 * **CSV Data Import:** Robust parsing of semicolon-separated (`.csv`) files containing tree data.
 * **Data Modeling:** Uses C `structs` to map complex real-world data (Species, Genus, Height, Circumference, Location).
-* **Statistical Analysis:**
-    * Calculation of average/max heights and circumferences.
-    * Age estimation based on planting year.
-* **Filtering & Searching:** Ability to query trees based on specific criteria (e.g., finding all trees of a certain genus).
+* **Browsing:** Displays the imported tree records.
+* **Sorting:** Sorts by age or health, in either direction.
+* **Searching:** Searches by species using the normalization routine in `main.c`.
+
+The current program does not calculate average/max measurements or estimate age from planting year. Its arrays and display loops assume 60 records.
 
 ## 💻 Technical Implementation
 
@@ -28,17 +29,17 @@ The project maps the CSV columns to a strictly typed C structure:
 
 ```c
 typedef struct {
-    int id;
-    char lieu[100];
-    char genre[50];
-    char espece[50];
+    char id[20];
+    char espece[30];
+    int age;
     float hauteur;
-    float circonference;
-    int annee_plantation;
+    float diametre;
+    float volume;
+    int sante;
 } Arbre;
 ```
 
-Each row of the CSV is parsed into an `Arbre` structure, then stored in an array so the program can iterate over the full dataset to compute statistics (averages, maxima, age estimation) and apply filters (e.g. by genus or species).
+Each row of the CSV is parsed into an `Arbre` structure, then stored in an array so the program can iterate over the full dataset to display records, search by species, and sort by age or health.
 
 ## 🚀 Comment lancer
 
@@ -60,7 +61,7 @@ gcc main.c -o forest_analyzer
     ./forest_analyzer
     ```
 
-Le programme lit le fichier `foret_arbres_50_V1.csv` (présent à la racine du dépôt) et affiche les analyses statistiques directement dans le terminal.
+Le programme lit le fichier `foret_arbres_50_V1.csv` (présent à la racine du dépôt) et propose un menu de consultation, recherche par espèce et tri par âge ou santé. Lancer depuis la racine pour que le chemin relatif du CSV soit résolu.
 
 ## 👤 Auteur
 
